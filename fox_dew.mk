@@ -21,7 +21,7 @@ OF_STATUS_H := 80
 OF_STATUS_INDENT_LEFT := 48
 OF_STATUS_INDENT_RIGHT := 48
 
-# Maximum Brightness Configuration
-OF_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-OF_MAX_BRIGHTNESS := 255
-OF_DEFAULT_BRIGHTNESS := 255
+# Backlight / Brightness configuration
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 4095
+TW_DEFAULT_BRIGHTNESS := 2048
