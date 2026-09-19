@@ -25,4 +25,3 @@ OF_STATUS_INDENT_RIGHT := 48
 OF_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 OF_MAX_BRIGHTNESS := 255
 OF_DEFAULT_BRIGHTNESS := 255
-EOF
