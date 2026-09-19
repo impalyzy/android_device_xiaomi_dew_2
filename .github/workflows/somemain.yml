@@ -1,0 +1,60 @@
+name: Build OrangeFox Recovery for Dew
+
+on: 
+  workflow_dispatch:
+    # Allows you to trigger the build manually from the GitHub Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkouts
+        uses: actions/checkout@v4
+
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 10240
+          swap-size-mb: 8192
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+
+      - name: Install Build Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc bison build-esential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zlib1g-dev
+
+      - name: Install Repo Tool
+        run: |
+          sudo mkdir -p /usr/local/bin
+          sudo curl -o /usr/local/bin/repo https://storage.googleapis.com/git-repo-downloads/repo
+          sudo chmod a+x /usr/local/bin/repo
+
+      - name: Initialize OrangeFox Source
+        run: |
+          mkdir -p ~/orangefox
+          cd ~/orangefox
+          repo init -u https://gitlab.com/OrangeFox/sync.git -b fox_14.1-R12-new --depth=1
+          repo sync --no-clone-bundle --no-tags --optimized-fetch --prune -j8
+
+      - name: Setup Device Tree
+        run: |
+          # Copy your device tree into the synced source workspace
+          mkdir -p ~/orangefox/device/xiaomi/dew
+          cp -r $GITHUB_WORKSPACE/* ~/orangefox/device/xiaomi/dew/
+
+      - name: Start Compilation
+        run: |
+          cd ~/orangefox
+          source build/envsetup.sh
+          export ALLOW_MISSING_DEPENDENCIES=true
+          lunch fox_dew-eng
+          mka recoveryimage
+
+      - name: Upload Recovery Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: OrangeFox-Recovery-dew
+          path: ~/orangefox/out/target/product/dew/recovery.img
