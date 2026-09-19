@@ -57,9 +57,10 @@ OF_STATUS_INDENT_LEFT := 48
 OF_STATUS_INDENT_RIGHT := 48
 OF_USE_GREEN_LED := 0
 
-# Maximum Brightness Overrides
-OF_MAX_BRIGHTNESS := 255
-OF_DEFAULT_BRIGHTNESS := 255
+# Backlight / Brightness configuration
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 4095
+TW_DEFAULT_BRIGHTNESS := 2048
 
 # Security Patch / Anti-Rollback Overrides
 PLATFORM_SECURITY_PATCH := 2099-12-31
