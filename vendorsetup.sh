@@ -25,5 +25,3 @@ export OF_STATUS_INDENT_RIGHT=48
 export TW_BRIGHTNESS_PATH="/sys/class/leds/lcd-backlight/brightness"
 export TW_MAX_BRIGHTNESS=4095
 export TW_DEFAULT_BRIGHTNESS=2048
-
-add_lunch_combo fox_dew-ap2a-eng
