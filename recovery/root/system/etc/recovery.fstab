@@ -9,7 +9,7 @@ system_dlkm     /system_dlkm    erofs   ro              wait,logical,first_stage
 
 # Data & Metadata Mounts (Android 16 / F2FS Encryption)
 /dev/block/by-name/metadata     /metadata       f2fs    noatime,nosuid,nodev,discard    wait,check,formattable,first_stage_mount
-/dev/block/by-name/userdata     /data           f2fs    noatime,nosuid,nodev,discard    wait,check,formattable,quota,latemount,resize,encryptable=footer
+/dev/block/by-name/userdata     /data           f2fs    noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt,gc_merge,atgc,age_extent_cache wait,check,formattable,quota,latemount,resize,readahead_size_kb=512,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2,keydirectory=/metadata/vold/metadata_encryption
 
 # Core Flashing & Backup Partitions (OrangeFox Flags Enabled)
 /dev/block/by-name/boot         /boot           emmc    defaults                        flags=display="Boot";backup=1;flashimg=1;slotselect
