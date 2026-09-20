@@ -4,8 +4,8 @@ LOCAL_PATH := device/xiaomi/dew
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# Inherit OrangeFox common configuration (must use vendor/fox, not twrp)
-$(call inherit-product, vendor/fox/config/common_full_phone.mk)
+# Inherit OrangeFox common configuration
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device Identifier Flags
 PRODUCT_NAME := fox_dew
