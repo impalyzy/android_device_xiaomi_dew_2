@@ -11,6 +11,7 @@ TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := generic
+TARGET_SUPPORTS_64_BIT_APPS := true
 
 # Bootloader & Display Configuration
 TARGET_BOOTLOADER_BOARD_NAME := dew
