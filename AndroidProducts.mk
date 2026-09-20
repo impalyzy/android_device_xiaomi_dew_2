@@ -1,2 +1,5 @@
 PRODUCT_MAKEFILES := \
-    $(local_dir)/fox_dew.mk
+    $(LOCAL_DIR)/fox_dew.mk
+
+COMMON_LUNCH_CHOICES := \
+    fox_dew-ap2a-eng
