@@ -5,7 +5,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 # Inherit OrangeFox common configuration
-$(call inherit-product, vendor/recovery/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device Identifier Flags
 PRODUCT_NAME := fox_dew
