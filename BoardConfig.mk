@@ -50,7 +50,7 @@ TARGET_BOARD_PLATFORM := mt6768
 
 # Virtual A/B & Dynamic Partitions
 AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS := boot recovery vendor_boot system vendor product dtb
+AB_OTA_PARTITIONS := boot recovery vendor_boot system vendor product
 BOARD_USES_METADATA_PARTITION := true
 BOARD_SUPER_PARTITION_BLOCK_DEVICE := super
 BOARD_SUPER_PARTITION_METADATA_DEVICE := super
